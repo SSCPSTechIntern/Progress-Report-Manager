@@ -1,0 +1,63 @@
+<!-- This is the first page for any workflow of this plug-in. -->
+
+<!-- FORMATING STYPE STUFF -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+<!-- The CSS package above applies Google styling to buttons and other elements. -->
+<style>
+.branding-below {
+  bottom: 56px;
+  top: 0;
+}
+
+.branding-text {
+  left: 7px;
+  position: relative;
+  top: 3px;
+}
+
+.col-contain {
+  overflow: hidden;
+}
+
+.col-one {
+  float: left;
+  width: 50%;
+}
+
+.logo {
+  vertical-align: middle;
+}
+
+.radio-spacer {
+  height: 20px;
+}
+
+.width-100 {
+  width: 100%;
+}
+</style>
+
+
+<!-- PAGE CONTENT -->
+<h1>Dev Mode Enabled</h1>
+<div class="sidebar main">
+    <div class="block">
+      BE CAREFUL!<br />
+      
+    </div>
+</div>
+
+<div class="sidebar bottom">
+  <input type="button" value="Dev Off" id="leave-devmode"
+    onclick="google.script.run.leaveDevModeJS()" />
+  <input type="button" value="Close" onclick="google.script.host.close()" />
+</div>
+
+<!-- FANCY JAVASCRIPT STUFF -->
+<script>
+  // function below is just "wrapper" around the button to show how to call other stuff
+  function leaveDevModeJS() {
+    //alert('In leaveDevModeJS');
+    google.script.run.leaveDevMode();
+  }
+</script>

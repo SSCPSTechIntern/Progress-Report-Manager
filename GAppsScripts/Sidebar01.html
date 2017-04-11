@@ -1,0 +1,90 @@
+<!-- This is the first page for any workflow of this plug-in. -->
+
+<!-- FORMATING STYPE STUFF -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+<!-- The CSS package above applies Google styling to buttons and other elements. -->
+<style>
+.branding-below {
+  bottom: 56px;
+  top: 0;
+}
+.branding-text {
+  left: 7px;
+  position: relative;
+  top: 3px;
+}
+.col-contain {
+  overflow: hidden;
+}
+.col-one {
+  float: left;
+  width: 50%;
+}
+.logo {
+  vertical-align: middle;
+}
+.radio-spacer {
+  height: 20px;
+}
+.width-100 {
+  width: 100%;
+}
+</style>
+
+
+<!-- PAGE CONTENT -->
+<h1>Start Page</h1>
+<div class="sidebar main">
+  <div class="block">
+    WORK IN PROGRESS - DO NOT USE!!!!!
+    <br />
+    <br />
+    Screen for instructions and buttons to go to other steps.
+    <br />
+    <br />
+    <hr>
+  </div>
+  <div class="dropdowns">
+    Simple HTML
+    <br>
+    <select name="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <hr>
+    Javascript
+    <br>
+    <select id="selectNumber">
+        <option>Choose a number</option>
+        <script>
+            var myArray = new Array("1", "2", "3", "4", "5");
+            for(i=0; i<myArray.length; i++) {
+                document.write('<option value="' + myArray[i] +'">' + myArray[i] + '</option>');
+            }
+        </script>
+    </select>
+    <hr>
+  </div>
+</div>
+
+<div class="sidebar bottom">
+  <input type="button" value="Dev On" id="enter-devmode"
+    onclick="confirmDevModeJS();" />
+  <input type="button" value="Dev Off" id="leave-devmode"
+    onclick="leaveDevModeJS()" />
+  <input type="button" value="Close" onclick="google.script.host.close()" />
+</div>
+
+<!-- FANCY JAVASCRIPT STUFF -->
+<script>
+  function confirmDevModeJS() {
+    //alert('In confirmDevModeJS');
+    google.script.run.confirmDevMode();
+  }
+  function leaveDevModeJS() {
+    //alert('In leaveDevModeJS');
+    google.script.run.leaveDevMode();
+  }
+</script>
