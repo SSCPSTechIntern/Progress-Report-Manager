@@ -11,7 +11,7 @@ along, but for now instructions are in the brute_force.gs file.
 
 ## Download And Print Scripts
 There are actually two scripts.  One python script to download Progress
-Reports as PDFS from Google Drive (using GAM).  And a bash script to print them.
+Reports as PDFs from Google Drive (using GAM).  And a bash script to print them.
 
 The Google Apps Manager (or GAM) installation process has changed.  It is much
 more automated and assumes the directory to install.  It is now found in ~/bin/gam/.
