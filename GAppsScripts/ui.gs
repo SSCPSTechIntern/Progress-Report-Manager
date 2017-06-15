@@ -101,9 +101,9 @@ function confirmDevMode() {
 
 /**
  * The purpose of this is the bring the user back to the beginning and to turn
- * off "devMode".  
+ * off "devMode".
  *
- * changes the property to disable "devMode" 
+ * changes the property to disable "devMode"
  * load Sidebar01.html
  */
 function leaveDevMode() {
@@ -113,4 +113,3 @@ function leaveDevMode() {
   SpreadsheetApp.getUi().alert('Dev Mode disabled.');
   showSidebar();
 }
-

@@ -40,28 +40,29 @@
  */
 function GetConfig(whichConfig) {
   // List docid for template files for each grade
-  var templateGrade0K = '17LcLGP7ByaGe8Bs3jMh63mntpY1v9AXc2_Z3C_kgErE'; // Semester 1
-  //var templateGrade0K = '1EUm3pQRiJ0Fxbx0VATL_HhRyTrZZeiUPkocv2vw7kJE'; // Semester 2
+  //var templateGrade0K = '17LcLGP7ByaGe8Bs3jMh63mntpY1v9AXc2_Z3C_kgErE'; // Semester 1
+  var templateGrade0K = '1-8V4ueBRxlWf85gKGu90-SMR9uAvdMHBP-IafBBM7Dg'; // Semester 2
   var templateGrade01 = '15xsZJuD-gY9k9Rd_Mo_fFqKl0_H_Yyhp6nf2k0ccjew';
   var templateGrade02 = '1R-79kk-VmLbAthq38HAc66HvJa_I5Z0QgstmS4b9k3M';
   var templateGrade03 = '1TERrr2xbMnQdnnFzxXGaMI8_2MHW8btnawbbUPLiUv8';
   var templateGrade04 = '11y1f5Ra_Jl1Zkj0XqYuSwM9vHW5Q5RsMDs49vFr8VU4';
 
-  // Destination folder for combined Pod files - not needed as can't do it
-  var currentFolderCombinedPodFilesID = '0B8RgM3B2REzvdXZKMUhwWVFqMGc';
-
   // What is current year? FY####
   var currentYear = 'FY2017';
 
   // What are terms?
+  var currentTerm = 'T1';
+  var nextTerm = 'T2';
   //var currentTerm = 'Q1';
   //var nextTerm = 'Q2';
-  var currentTerm = 'Q3';
-  var nextTerm = 'Q4';
   //var currentTerm = 'Q3';
   //var nextTerm = 'Q4';
+  //var currentTerm = 'Q4';
+  //var nextTerm = 'NA';
   //var currentTerm = 'S1';
   //var nextTerm = 'S2';
+  //var currentTerm = 'S2';
+  //var nextTerm = 'NA';
 
   //Folder Vars - Testing
   //var currentClassName = "Dee & Pam's Pod";
@@ -123,9 +124,9 @@ function GetConfig(whichConfig) {
   //var currentClassFolderID = '0B8RgM3B2REzvVlFyelNyUW85Qlk';
   //var currentClassLevel = "L2";
 
-  var currentClassName = "Nicole's Pod";
-  var currentClassFolderID = '0B8RgM3B2REzvSzlLLTVONU81MjA';
-  var currentClassLevel = "L2";
+  //var currentClassName = "Nicole's Pod";
+  //var currentClassFolderID = '0B8RgM3B2REzvSzlLLTVONU81MjA';
+  //var currentClassLevel = "L2";
 
   // now create the variable for when called
   var currentClassFolderObject = DriveApp.getFolderById(currentClassFolderID);
@@ -148,9 +149,6 @@ function GetConfig(whichConfig) {
       break;
     case "templateGrade04":
       var foundConfig = templateGrade04;
-      break;
-    case "currentFolderCombinedPodFilesID":
-      var foundConfig = currentFolderCombinedPodFilesID;
       break;
     case "currentYear":
       var foundConfig = currentYear;
@@ -398,41 +396,60 @@ function ArchiveTerm() {
   //arrayOfStandards4thMath.push("Number Sense: Multiply two digit by two digit whole numbers.");
   //arrayOfStandards4thMath.push("Problem Solving: Solve multi-step word problems posed with whole numbers and having whole-number answers using the four operation.");
   //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
-  // Q4 - 3rd grade standards
-  //var numberOfStandards3rdMath = 4;
+  // Q3 - 3rd grade standards
+  //var numberOfStandards3rdMath = 7;
   //var arrayOfStandards3rdMath = [];
-  //arrayOfStandards3rdMath.push("Number Sense: To be able to understand a fraction as a fraction on a number line.");
-  //arrayOfStandards3rdMath.push("Number Sense: To be able to compare two fractions with the same numerator or same denominator by reasoning about their size.");
-  //arrayOfStandards3rdMath.push("Number Sense: To be able to  understand fractions as part of a whole.");
+  //arrayOfStandards3rdMath.push("Operations: To solve equations using parentheses.");
+  //arrayOfStandards3rdMath.push("Operations: To solve equations with a letter standing for the unknown quantity.");
+  //arrayOfStandards3rdMath.push("Number Sense: To fluently multiply and divide single digits.");
+  //arrayOfStandards3rdMath.push("Measurement: To find the area of a rectangle with whole number side lengths.");
+  //arrayOfStandards3rdMath.push("Measurement: To find the area of rectangular shapes by decomposing them into non-overlapping rectangles.");
+  //arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
+  //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
+  // Q3 - 4th grade standards
+  //var numberOfStandards4thMath = 7;
+  //var arrayOfStandards4thMath = [];
+  //arrayOfStandards4thMath.push("Geometry: To draw and identify points, lines, line segments, rays, angles, parallel and perpendicular lines.");
+  //arrayOfStandards4thMath.push("Measurement: To measure and draw angles using a protractor");
+  //arrayOfStandards4thMath.push("Measurement: To recognize angle measurements as additives.");
+  //arrayOfStandards4thMath.push("Geometry: To recognize lines of symmetry for two-dimensional figures.");
+  //arrayOfStandards4thMath.push("Geometry: To recognize different types of triangles based on attributes.");
+  //arrayOfStandards4thMath.push("Problem Solving:  Use the four operations to solve word problems.");
+  //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
+  // Q4 - 3rd grade standards
+  //var numberOfStandards3rdMath = 5;
+  //var arrayOfStandards3rdMath = [];
+  //arrayOfStandards3rdMath.push("Number Sense: To compare two fractions with like numerators or denominators.");
+  //arrayOfStandards3rdMath.push("To represent fractions on a number line.");
+  //arrayOfStandards3rdMath.push("To display and analyze data on a line plot.");
+  //arrayOfStandards3rdMath.push("To draw and read a scaled bar graph.");
   //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
   // Q4 - 4th grade standards
-  //var numberOfStandards4thMath = 5;
+  //var numberOfStandards4thMath = 6;
   //var arrayOfStandards4thMath = [];
-  //arrayOfStandards4thMath.push("Geometry: To be able to draw and identify points, lines, line segments, rays, and angles.");
-  //arrayOfStandards4thMath.push("Geometry: To be able to identify parallel and perpendicular lines.");
-  //arrayOfStandards4thMath.push("Measurement: To be able to measure and draw angles using a protractor.");
-  //arrayOfStandards4thMath.push("Measurement: To be able to recognize angle measure as additive.");
+  //arrayOfStandards4thMath.push("Geometry: To add and subtract fractions with like and unlike denominators.");
+  //arrayOfStandards4thMath.push("Geometry: To compare two fractions with like and unlike denominators.");
+  //arrayOfStandards4thMath.push("Measurement: To express a fraction as a decimal.");
+  //arrayOfStandards4thMath.push("Measurement: To compare two decimals to the hundredths place.");
+  //arrayOfStandards4thMath.push("Measurement: To display and analyze data on line plots in fractions of a unit.");
   //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
 function SetMathSkills() {
-  // Q3 - 3rd grade standards
-  var numberOfStandards3rdMath = 7;
+  // Q4 - 3rd grade standards
+  var numberOfStandards3rdMath = 5;
   var arrayOfStandards3rdMath = [];
-  arrayOfStandards3rdMath.push("Operations: To solve equations using parentheses.");
-  arrayOfStandards3rdMath.push("Operations: To solve equations with a letter standing for the unknown quantity.");
-  arrayOfStandards3rdMath.push("Number Sense: To fluently multiply and divide single digits.");
-  arrayOfStandards3rdMath.push("Measurement: To find the area of a rectangle with whole number side lengths.");
-  arrayOfStandards3rdMath.push("Measurement: To find the area of rectangular shapes by decomposing them into non-overlapping rectangles.");
-  arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
+  arrayOfStandards3rdMath.push("Number Sense: To compare two fractions with like numerators or denominators.");
+  arrayOfStandards3rdMath.push("To represent fractions on a number line.");
+  arrayOfStandards3rdMath.push("To display and analyze data on a line plot.");
+  arrayOfStandards3rdMath.push("To draw and read a scaled bar graph.");
   arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q3 - 4th grade standards
-  var numberOfStandards4thMath = 7;
+  // Q4 - 4th grade standards
+  var numberOfStandards4thMath = 6;
   var arrayOfStandards4thMath = [];
-  arrayOfStandards4thMath.push("Geometry: To draw and identify points, lines, line segments, rays, angles, parallel and perpendicular lines.");
-  arrayOfStandards4thMath.push("Measurement: To measure and draw angles using a protractor");
-  arrayOfStandards4thMath.push("Measurement: To recognize angle measurements as additives.");
-  arrayOfStandards4thMath.push("Geometry: To recognize lines of symmetry for two-dimensional figures.");
-  arrayOfStandards4thMath.push("Geometry: To recognize different types of triangles based on attributes.");
-  arrayOfStandards4thMath.push("Problem Solving:  Use the four operations to solve word problems.");
+  arrayOfStandards4thMath.push("Geometry: To add and subtract fractions with like and unlike denominators.");
+  arrayOfStandards4thMath.push("Geometry: To compare two fractions with like and unlike denominators.");
+  arrayOfStandards4thMath.push("Measurement: To express a fraction as a decimal.");
+  arrayOfStandards4thMath.push("Measurement: To compare two decimals to the hundredths place.");
+  arrayOfStandards4thMath.push("Measurement: To display and analyze data on line plots in fractions of a unit.");
   arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
   // get other needed variables
   var arrayOfStandards3rdMathLength = arrayOfStandards3rdMath.length;
