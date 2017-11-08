@@ -18,64 +18,20 @@ import sys        # used for prompting user
 varDownloadFolder = "/home/sscpslocal/ProgressReports/"
 
   ## What is current year? FY####
-varcurrentYear = 'FY2017';
+varcurrentYear = 'FY2018';
   ## What is current term?
-#varcurrentTerm = 'Q1';
+varcurrentTerm = 'Q1';
 #varcurrentTerm = 'Q2';
-varcurrentTerm = 'Q3';
+#varcurrentTerm = 'Q3';
 #varcurrentTerm = 'Q4';
 #varcurrentTerm = 'S1';
 #varcurrentTerm = 'S2';
 
   ##Folder Vars - Testing
 varcurrentClassName = "Dee & Pam's Pod"
-varcurrentClassFolderObject = `'0B8RgM3B2REzvWUhUOEQyMC1qSHc'`
+varcurrentClassFolderID = `'0B8RgM3B2REzvWUhUOEQyMC1qSHc'`
 
-  ##Folder Vars - Kindergarten
-#varcurrentClassName = "Kassandra & Marie's Pod"
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvM3YtUGUxbDFFdlU'`
-
-#varcurrentClassName = "Kristen & Linda's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvdmRYSFZmS2tPdEk'`
-
-#varcurrentClassName = "Melissa & Marie's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzva1pSTXVCMlBmMnc'`
-
-#varcurrentClassName = "Amy & Linda's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvb0RsWE04Tk1hRTA'`
-
-  ##Folder Vars - 1st & 2nd Graders
-#varcurrentClassName = "Deana & Niki's Pod"
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvd3paSHZzWncwcVE'`
-
-#varcurrentClassName = "Jessica & Beth's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvaEJ1cDd1R0lKYzg'`
-
-#varcurrentClassName = "June & Amy's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvMnUxYjJqcHczdlE'`
-
-#varcurrentClassName = "Nora & Denise's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvd0lqMXkzMUZLVUk'`
-
-#varcurrentClassName = "Sheina's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvN0pxOXVqcWdEMDg'`
-
-  ##//Folder Vars - 3rd & 4th Graders
-#varcurrentClassName = "Darlene's Pod"
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvX1UweVo4SldkWTA'`
-
-#varcurrentClassName = "John's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvRkhoN2x5NWJuRE0'`
-
-#varcurrentClassName = "Krista's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvT1Q2a1lOQ3QySnc'`
-
-#varcurrentClassName = "Mariah's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvVlFyelNyUW85Qlk'`
-
-#varcurrentClassName = "Nicole's Pod";
-#varcurrentClassFolderObject = `'0B8RgM3B2REzvSzlLLTVONU81MjA'`
-
+### paste in same variables from Google Apps scripts, but converted from JS to bash
 
 ### Variables that are used more for config then processing
 # setup to find GAM
@@ -92,7 +48,7 @@ varTargetDownloadFolder = varDownloadFolder + varcurrentYear + "/" + varcurrentT
 #input("check if above makes sense")
 
 # what folder should GAM look for?
-varFolderIDToFind = varcurrentClassFolderObject
+varFolderIDToFind = varcurrentClassFolderID
 
 os.system('clear')
 
