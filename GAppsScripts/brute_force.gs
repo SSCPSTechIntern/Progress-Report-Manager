@@ -35,150 +35,6 @@
 
 /**
  *
- * Purpose: to put all configuration in one location.
- *
- */
-function GetConfig(whichConfig) {
-  // List docid for template files for each grade
-  //var templateGrade0K = '17LcLGP7ByaGe8Bs3jMh63mntpY1v9AXc2_Z3C_kgErE'; // Semester 1
-  var templateGrade0K = '1-8V4ueBRxlWf85gKGu90-SMR9uAvdMHBP-IafBBM7Dg'; // Semester 2
-  var templateGrade01 = '15xsZJuD-gY9k9Rd_Mo_fFqKl0_H_Yyhp6nf2k0ccjew';
-  var templateGrade02 = '1R-79kk-VmLbAthq38HAc66HvJa_I5Z0QgstmS4b9k3M';
-  var templateGrade03 = '1TERrr2xbMnQdnnFzxXGaMI8_2MHW8btnawbbUPLiUv8';
-  var templateGrade04 = '11y1f5Ra_Jl1Zkj0XqYuSwM9vHW5Q5RsMDs49vFr8VU4';
-
-  // What is current year? FY####
-  var currentYear = 'FY2017';
-
-  // What are terms?
-  var currentTerm = 'T1';
-  var nextTerm = 'T2';
-  //var currentTerm = 'Q1';
-  //var nextTerm = 'Q2';
-  //var currentTerm = 'Q3';
-  //var nextTerm = 'Q4';
-  //var currentTerm = 'Q4';
-  //var nextTerm = 'NA';
-  //var currentTerm = 'S1';
-  //var nextTerm = 'S2';
-  //var currentTerm = 'S2';
-  //var nextTerm = 'NA';
-
-  //Folder Vars - Testing
-  //var currentClassName = "Dee & Pam's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvWUhUOEQyMC1qSHc';  // Dee's Pod
-  //var currentClassLevel = "L2";
-
-  //Folder Vars - Kindergarten
-  //var currentClassName = "Amy & Linda's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvb0RsWE04Tk1hRTA';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Kassandra & Marie's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvM3YtUGUxbDFFdlU';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Kristen & Linda's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvdmRYSFZmS2tPdEk';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Melissa & Marie's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzva1pSTXVCMlBmMnc';
-  //var currentClassLevel = "L1";
-
-  //Folder Vars - 1st & 2nd Graders
-  //var currentClassName = "Deana & Niki's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvd3paSHZzWncwcVE';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Jessica & Beth's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvaEJ1cDd1R0lKYzg';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "June & Amy's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvMnUxYjJqcHczdlE';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Nora & Denise's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvd0lqMXkzMUZLVUk';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Sheina's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvN0pxOXVqcWdEMDg';
-  //var currentClassLevel = "L1";
-
-  //Folder Vars - 3rd & 4th Graders
-  //var currentClassName = "Darlene's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvX1UweVo4SldkWTA';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "John's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvRkhoN2x5NWJuRE0';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Krista's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvT1Q2a1lOQ3QySnc';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Mariah's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvVlFyelNyUW85Qlk';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Nicole's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvSzlLLTVONU81MjA';
-  //var currentClassLevel = "L2";
-
-  // now create the variable for when called
-  var currentClassFolderObject = DriveApp.getFolderById(currentClassFolderID);
-
-  // defaut value
-  var foundConfig = "ERROR: initialized foundConfig, but not changed by switch/case.";
-
-  switch (whichConfig) {
-    case "templateGrade0K":
-      var foundConfig = templateGrade0K;
-      break;
-    case "templateGrade01":
-      var foundConfig = templateGrade01;
-      break;
-    case "templateGrade02":
-      var foundConfig = templateGrade02;
-      break;
-    case "templateGrade03":
-      var foundConfig = templateGrade03;
-      break;
-    case "templateGrade04":
-      var foundConfig = templateGrade04;
-      break;
-    case "currentYear":
-      var foundConfig = currentYear;
-      break;
-    case "currentTerm":
-      var foundConfig = currentTerm;
-      break;
-    case "nextTerm":
-      var foundConfig = nextTerm;
-      break;
-    case "currentClassName":
-      var foundConfig = currentClassName;
-      break;
-    case "currentClassFolderObject":
-      var foundConfig = currentClassFolderObject;
-      break;
-    case "currentClassLevel":
-      var foundConfig = currentClassLevel;
-      break;
-    default:
-      var foundConfig = "ERROR: asking for config that is not found.";
-      break;
-  }
-  return foundConfig;
-}
-
-
-
-/**
- *
  * Purpose: create report file per student based on templates.
  * Note: Kindergarten uses S1/2 for terms, 1st - 4th use Q1/2/3/4.
  *
@@ -369,13 +225,16 @@ function ArchiveTerm() {
  * Purpose: For 3rd & 4th grade, math standards change quarterly.  This adjusts that table.
  *
  */
-//!!IMPORTANT NOTE!!
+//!!ERROR HELP!!
 //  Sometimes teachers accidentally alter the tables.  This will cause this function to error out.
 //  The only way to fix it is move all files to temp folder & process them one at a time.
 //  Copy a known good table to the problem file(s).  Don't forget to move processed files out the way too.
 //
-// below are each Q's standards, move into function & update as needed, Q1 is assumed to be in template
-// these values are here because Google Apps Scripts has a limit on function "size" with # of characters including comments
+//!!IMPORTANT NOTE ON HOW THIS WORKS!!
+//  Below are each Q's standards, move into function & update as needed.  Q1 standards are assumed
+//  to be in template.  The values are outside the function because Google Apps Scripts has a limit
+//  on function "size" with # of characters including the comments!!
+//
   // Q2 - 3rd grade standards
   //var numberOfStandards3rdMath = 7;
   //var arrayOfStandards3rdMath = [];
@@ -387,13 +246,12 @@ function ArchiveTerm() {
   //arrayOfStandards3rdMath.push("Problem Solving:  Use the four operations to solve word problems involving masses or volumes that are given in the same units.");
   //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
   // Q2 - 4th grade standards
-  //var numberOfStandards4thMath = 7;
+  //var numberOfStandards4thMath = 6;
   //var arrayOfStandards4thMath = [];
   //arrayOfStandards4thMath.push("Number Sense: Multiply whole numbers by one digit using different multiplication models.");
-  //arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders with one digit divisors.");
+  //arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders of 2-digit numbers with one digit divisors.");
   //arrayOfStandards4thMath.push("Measurement:  Find the perimeter of a rectangle when given the area and one length.");
   //arrayOfStandards4thMath.push("Measurement:  Find the area of a rectangle when given the perimeter and one length.");
-  //arrayOfStandards4thMath.push("Number Sense: Multiply two digit by two digit whole numbers.");
   //arrayOfStandards4thMath.push("Problem Solving: Solve multi-step word problems posed with whole numbers and having whole-number answers using the four operation.");
   //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
   // Q3 - 3rd grade standards
@@ -407,14 +265,15 @@ function ArchiveTerm() {
   //arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
   //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
   // Q3 - 4th grade standards
-  //var numberOfStandards4thMath = 7;
+  //var numberOfStandards4thMath = 8;
   //var arrayOfStandards4thMath = [];
-  //arrayOfStandards4thMath.push("Geometry: To draw and identify points, lines, line segments, rays, angles, parallel and perpendicular lines.");
-  //arrayOfStandards4thMath.push("Measurement: To measure and draw angles using a protractor");
-  //arrayOfStandards4thMath.push("Measurement: To recognize angle measurements as additives.");
-  //arrayOfStandards4thMath.push("Geometry: To recognize lines of symmetry for two-dimensional figures.");
-  //arrayOfStandards4thMath.push("Geometry: To recognize different types of triangles based on attributes.");
-  //arrayOfStandards4thMath.push("Problem Solving:  Use the four operations to solve word problems.");
+  //arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders with one digit divisors.");
+  //arrayOfStandards4thMath.push("Number Sense: Multiply two-digit by two-digit whole numbers.");
+  //arrayOfStandards4thMath.push("Number Sense: Find all factor pairs for a whole number.");
+  //arrayOfStandards4thMath.push("Number Sense: To determine whether a whole number is prime or composite.");
+  //arrayOfStandards4thMath.push("Number Sense: To recognize and generate equivalent fractions.");
+  //arrayOfStandards4thMath.push("Number Sense: To compare two fractions with like and unlike denominators.");
+  //arrayOfStandards4thMath.push("Number Sense: To add and subtract fraction with like and unlike denominators.");
   //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
   // Q4 - 3rd grade standards
   //var numberOfStandards3rdMath = 5;
@@ -434,22 +293,26 @@ function ArchiveTerm() {
   //arrayOfStandards4thMath.push("Measurement: To display and analyze data on line plots in fractions of a unit.");
   //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
 function SetMathSkills() {
-  // Q4 - 3rd grade standards
-  var numberOfStandards3rdMath = 5;
+  // Q3 - 3rd grade standards
+  var numberOfStandards3rdMath = 7;
   var arrayOfStandards3rdMath = [];
-  arrayOfStandards3rdMath.push("Number Sense: To compare two fractions with like numerators or denominators.");
-  arrayOfStandards3rdMath.push("To represent fractions on a number line.");
-  arrayOfStandards3rdMath.push("To display and analyze data on a line plot.");
-  arrayOfStandards3rdMath.push("To draw and read a scaled bar graph.");
+  arrayOfStandards3rdMath.push("Operations: To solve equations using parentheses.");
+  arrayOfStandards3rdMath.push("Operations: To solve equations with a letter standing for the unknown quantity.");
+  arrayOfStandards3rdMath.push("Number Sense: To fluently multiply and divide single digits.");
+  arrayOfStandards3rdMath.push("Measurement: To find the area of a rectangle with whole number side lengths.");
+  arrayOfStandards3rdMath.push("Measurement: To find the area of rectangular shapes by decomposing them into non-overlapping rectangles.");
+  arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
   arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q4 - 4th grade standards
-  var numberOfStandards4thMath = 6;
+  // Q3 - 4th grade standards
+  var numberOfStandards4thMath = 8;
   var arrayOfStandards4thMath = [];
-  arrayOfStandards4thMath.push("Geometry: To add and subtract fractions with like and unlike denominators.");
-  arrayOfStandards4thMath.push("Geometry: To compare two fractions with like and unlike denominators.");
-  arrayOfStandards4thMath.push("Measurement: To express a fraction as a decimal.");
-  arrayOfStandards4thMath.push("Measurement: To compare two decimals to the hundredths place.");
-  arrayOfStandards4thMath.push("Measurement: To display and analyze data on line plots in fractions of a unit.");
+  arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders with one digit divisors.");
+  arrayOfStandards4thMath.push("Number Sense: Multiply two-digit by two-digit whole numbers.");
+  arrayOfStandards4thMath.push("Number Sense: Find all factor pairs for a whole number.");
+  arrayOfStandards4thMath.push("Number Sense: To determine whether a whole number is prime or composite.");
+  arrayOfStandards4thMath.push("Number Sense: To recognize and generate equivalent fractions.");
+  arrayOfStandards4thMath.push("Number Sense: To compare two fractions with like and unlike denominators.");
+  arrayOfStandards4thMath.push("Number Sense: To add and subtract fraction with like and unlike denominators.");
   arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
   // get other needed variables
   var arrayOfStandards3rdMathLength = arrayOfStandards3rdMath.length;

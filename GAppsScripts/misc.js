@@ -21,8 +21,8 @@ function RemoveCopyOfAllFilesInFolder() {
 //  maybe change this to be generic, i.e. give list of docs & pairs to search & replace?
 function ChangeStringAllReportsPerPod() {
   // what to find and what to replace
-  var stringToFind = "Subatizing";
-  var stringToReplace = "Subitizing";
+  var stringToFind = "Nora's Pod";
+  var stringToReplace = "Arbrenne's Pod";
   //get needed variables
   var currentYear = GetConfig("currentYear");
   var currentTerm = GetConfig("currentTerm");
@@ -42,11 +42,12 @@ function ChangeStringAllReportsPerPod() {
       //SpreadsheetApp.getUi().alert('Current student: ' + currentStudentName + '.');
       var currentFileId = currentFile.getId();
       var currentDocumentObject = DocumentApp.openById(currentFileId);
+      //use this for body
       var currentDocumentBody = currentDocumentObject.getBody();
-      var currentDocumentFooter = currentDocumentObject.getFooter();
       currentDocumentBody.replaceText(stringToFind,stringToReplace);
       //use this for footer
-      //currentDocumentFooter.replaceText(stringToFind,stringToReplace);
+      var currentDocumentFooter = currentDocumentObject.getFooter();
+      currentDocumentFooter.replaceText(stringToFind,stringToReplace);
     }
     SpreadsheetApp.getUi().alert('Finished replacement:  ' + currentClassName + '.');
   }
