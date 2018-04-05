@@ -225,103 +225,30 @@ function ArchiveTerm() {
  * Purpose: For 3rd & 4th grade, math standards change quarterly.  This adjusts that table.
  *
  */
-//!!ERROR HELP!!
-//  Sometimes teachers accidentally alter the tables.  This will cause this function to error out.
-//  The only way to fix it is move all files to temp folder & process them one at a time.
-//  Copy a known good table to the problem file(s).  Don't forget to move processed files out the way too.
+//!!IMPORTANT INFO ABOUT ERRORS!!
+//  Sometimes teachers accidentally alter the tables.  Doing so will cause this function to error out.
+//  The only way to find the problem file is to move all files to temp folder & process them one at a time.
+//  To fix, copy a known good table to the problem file(s).
 //
-//!!IMPORTANT NOTE ON HOW THIS WORKS!!
-//  Below are each Q's standards, move into function & update as needed.  Q1 standards are assumed
-//  to be in template.  The values are outside the function because Google Apps Scripts has a limit
-//  on function "size" with # of characters including the comments!!
+//  Two gotchas:  removing comments if copied from another student.  And leaving processed files in the
+//  temp folder.
 //
-  // Q2 - 3rd grade standards
-  //var numberOfStandards3rdMath = 7;
-  //var arrayOfStandards3rdMath = [];
-  //arrayOfStandards3rdMath.push("Number Sense:  Adding and subtracting multi-digit numbers with regrouping.");
-  //arrayOfStandards3rdMath.push("Number Sense:  Estimate by rounding to the nearest 10 or 100.");
-  //arrayOfStandards3rdMath.push("Measurement:  Measure time intervals in minutes by representing the problem on a number line.");
-  //arrayOfStandards3rdMath.push("Measurement:  Measure and estimate liquid volumes and masses of objects using standard units or grams, kilograms, and liters.");
-  //arrayOfStandards3rdMath.push("Number Sense:  Multiply and divide up to 7's.");
-  //arrayOfStandards3rdMath.push("Problem Solving:  Use the four operations to solve word problems involving masses or volumes that are given in the same units.");
-  //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q2 - 4th grade standards
-  //var numberOfStandards4thMath = 6;
-  //var arrayOfStandards4thMath = [];
-  //arrayOfStandards4thMath.push("Number Sense: Multiply whole numbers by one digit using different multiplication models.");
-  //arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders of 2-digit numbers with one digit divisors.");
-  //arrayOfStandards4thMath.push("Measurement:  Find the perimeter of a rectangle when given the area and one length.");
-  //arrayOfStandards4thMath.push("Measurement:  Find the area of a rectangle when given the perimeter and one length.");
-  //arrayOfStandards4thMath.push("Problem Solving: Solve multi-step word problems posed with whole numbers and having whole-number answers using the four operation.");
-  //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
-  // Q3 - 3rd grade standards
-  //var numberOfStandards3rdMath = 7;
-  //var arrayOfStandards3rdMath = [];
-  //arrayOfStandards3rdMath.push("Operations: To solve equations using parentheses.");
-  //arrayOfStandards3rdMath.push("Operations: To solve equations with a letter standing for the unknown quantity.");
-  //arrayOfStandards3rdMath.push("Number Sense: To fluently multiply and divide single digits.");
-  //arrayOfStandards3rdMath.push("Measurement: To find the area of a rectangle with whole number side lengths.");
-  //arrayOfStandards3rdMath.push("Measurement: To find the area of rectangular shapes by decomposing them into non-overlapping rectangles.");
-  //arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
-  //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q3 - 4th grade standards
-  //var numberOfStandards4thMath = 8;
-  //var arrayOfStandards4thMath = [];
-  //arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders with one digit divisors.");
-  //arrayOfStandards4thMath.push("Number Sense: Multiply two-digit by two-digit whole numbers.");
-  //arrayOfStandards4thMath.push("Number Sense: Find all factor pairs for a whole number.");
-  //arrayOfStandards4thMath.push("Number Sense: To determine whether a whole number is prime or composite.");
-  //arrayOfStandards4thMath.push("Number Sense: To recognize and generate equivalent fractions.");
-  //arrayOfStandards4thMath.push("Number Sense: To compare two fractions with like and unlike denominators.");
-  //arrayOfStandards4thMath.push("Number Sense: To add and subtract fraction with like and unlike denominators.");
-  //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
-  // Q4 - 3rd grade standards
-  //var numberOfStandards3rdMath = 5;
-  //var arrayOfStandards3rdMath = [];
-  //arrayOfStandards3rdMath.push("Number Sense: To compare two fractions with like numerators or denominators.");
-  //arrayOfStandards3rdMath.push("To represent fractions on a number line.");
-  //arrayOfStandards3rdMath.push("To display and analyze data on a line plot.");
-  //arrayOfStandards3rdMath.push("To draw and read a scaled bar graph.");
-  //arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q4 - 4th grade standards
-  //var numberOfStandards4thMath = 6;
-  //var arrayOfStandards4thMath = [];
-  //arrayOfStandards4thMath.push("Geometry: To add and subtract fractions with like and unlike denominators.");
-  //arrayOfStandards4thMath.push("Geometry: To compare two fractions with like and unlike denominators.");
-  //arrayOfStandards4thMath.push("Measurement: To express a fraction as a decimal.");
-  //arrayOfStandards4thMath.push("Measurement: To compare two decimals to the hundredths place.");
-  //arrayOfStandards4thMath.push("Measurement: To display and analyze data on line plots in fractions of a unit.");
-  //arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
 function SetMathSkills() {
-  // Q3 - 3rd grade standards
-  var numberOfStandards3rdMath = 7;
-  var arrayOfStandards3rdMath = [];
-  arrayOfStandards3rdMath.push("Operations: To solve equations using parentheses.");
-  arrayOfStandards3rdMath.push("Operations: To solve equations with a letter standing for the unknown quantity.");
-  arrayOfStandards3rdMath.push("Number Sense: To fluently multiply and divide single digits.");
-  arrayOfStandards3rdMath.push("Measurement: To find the area of a rectangle with whole number side lengths.");
-  arrayOfStandards3rdMath.push("Measurement: To find the area of rectangular shapes by decomposing them into non-overlapping rectangles.");
-  arrayOfStandards3rdMath.push("Problem Solving: Use the four operations to solve word problems.");
-  arrayOfStandards3rdMath.push("Participation / Perseverance / Focus.");
-  // Q3 - 4th grade standards
-  var numberOfStandards4thMath = 8;
-  var arrayOfStandards4thMath = [];
-  arrayOfStandards4thMath.push("Number Sense: Find quotient and remainders with one digit divisors.");
-  arrayOfStandards4thMath.push("Number Sense: Multiply two-digit by two-digit whole numbers.");
-  arrayOfStandards4thMath.push("Number Sense: Find all factor pairs for a whole number.");
-  arrayOfStandards4thMath.push("Number Sense: To determine whether a whole number is prime or composite.");
-  arrayOfStandards4thMath.push("Number Sense: To recognize and generate equivalent fractions.");
-  arrayOfStandards4thMath.push("Number Sense: To compare two fractions with like and unlike denominators.");
-  arrayOfStandards4thMath.push("Number Sense: To add and subtract fraction with like and unlike denominators.");
-  arrayOfStandards4thMath.push("Participation / Perseverance / Focus.");
-  // get other needed variables
-  var arrayOfStandards3rdMathLength = arrayOfStandards3rdMath.length;
-  var arrayOfStandards4thMathLength = arrayOfStandards4thMath.length;
   var currentYear = GetConfig("currentYear");
   var currentTerm = GetConfig("currentTerm");
   var currentClassName = GetConfig("currentClassName");
   var currentClassFolderObject = GetConfig("currentClassFolderObject"); // was thisQuarterFolderObject
   var currentClassLevel = GetConfig("currentClassLevel");
+
+  // set standards variables
+  var arrayOfStandards3rdMath = GetConfigGradeStandards('3', currentTerm);
+  var arrayOfStandards4thMath = GetConfigGradeStandards('4', currentTerm);
+  var arrayOfStandards3rdMathLength = arrayOfStandards3rdMath.length;
+  var arrayOfStandards4thMathLength = arrayOfStandards4thMath.length;
+  //SpreadsheetApp.getUi().alert("3rd Math Array: " + arrayOfStandards3rdMath + ".");
+  //SpreadsheetApp.getUi().alert("3rd Math Array Length: " + arrayOfStandards3rdMathLength + ".");
+  //SpreadsheetApp.getUi().alert("4th Math Array: " + arrayOfStandards4thMath + ".");
+  //SpreadsheetApp.getUi().alert("4th Math Array Length: " + arrayOfStandards4thMathLength + ".");
 
   SpreadsheetApp.getUi().alert("Setting Math Standards for: " + currentClassName + ".");
   SpreadsheetApp.getUi().alert("WARNING: If a teacher accidentally modifies tables, you will need to process files individually to find the one to fix.");
@@ -340,7 +267,7 @@ function SetMathSkills() {
     if (workingGradeAsText == '3') {
       var currentDocObjectBody = currentDocObject.getBody();
       var workingTableObject = currentDocObjectBody.findText('Math').getElement().getParent().getParent().getParent().getParent();
-      setRowsOnTable(workingTableObject, numberOfStandards3rdMath + 2, true);
+      setRowsOnTable(workingTableObject, arrayOfStandards3rdMathLength + 2, true);
       var styleForCellMark = {};
       styleForCellMark[DocumentApp.Attribute.HORIZONTAL_ALIGNMENT] = DocumentApp.HorizontalAlignment.LEFT;
       styleForCellMark[DocumentApp.Attribute.FONT_FAMILY] = DocumentApp.FontFamily.CALIBRI;
@@ -353,7 +280,7 @@ function SetMathSkills() {
     } else if (workingGradeAsText == '4') {
       var currentDocObjectBody = currentDocObject.getBody();
       var workingTableObject = currentDocObjectBody.findText('Math').getElement().getParent().getParent().getParent().getParent();
-      setRowsOnTable(workingTableObject, numberOfStandards4thMath + 2, true);
+      setRowsOnTable(workingTableObject, arrayOfStandards4thMathLength + 2, true);
       var styleForCellMark = {};
       styleForCellMark[DocumentApp.Attribute.HORIZONTAL_ALIGNMENT] = DocumentApp.HorizontalAlignment.LEFT;
       styleForCellMark[DocumentApp.Attribute.FONT_FAMILY] = DocumentApp.FontFamily.CALIBRI;
