@@ -241,14 +241,14 @@ function SetMathSkills() {
   var currentClassLevel = GetConfig("currentClassLevel");
 
   // set standards variables
-  var arrayOfStandards3rdMath = GetConfigGradeStandards('3', currentTerm);
-  var arrayOfStandards4thMath = GetConfigGradeStandards('4', currentTerm);
+  var arrayOfStandards3rdMath = GetConfigGradeTermStandards('3', currentTerm);
+  var arrayOfStandards4thMath = GetConfigGradeTermStandards('4', currentTerm);
   var arrayOfStandards3rdMathLength = arrayOfStandards3rdMath.length;
   var arrayOfStandards4thMathLength = arrayOfStandards4thMath.length;
-  //SpreadsheetApp.getUi().alert("3rd Math Array: " + arrayOfStandards3rdMath + ".");
-  //SpreadsheetApp.getUi().alert("3rd Math Array Length: " + arrayOfStandards3rdMathLength + ".");
-  //SpreadsheetApp.getUi().alert("4th Math Array: " + arrayOfStandards4thMath + ".");
-  //SpreadsheetApp.getUi().alert("4th Math Array Length: " + arrayOfStandards4thMathLength + ".");
+  SpreadsheetApp.getUi().alert("3rd Math Array: " + arrayOfStandards3rdMath + ".");
+  SpreadsheetApp.getUi().alert("3rd Math Array Length: " + arrayOfStandards3rdMathLength + ".");
+  SpreadsheetApp.getUi().alert("4th Math Array: " + arrayOfStandards4thMath + ".");
+  SpreadsheetApp.getUi().alert("4th Math Array Length: " + arrayOfStandards4thMathLength + ".");
 
   SpreadsheetApp.getUi().alert("Setting Math Standards for: " + currentClassName + ".");
   SpreadsheetApp.getUi().alert("WARNING: If a teacher accidentally modifies tables, you will need to process files individually to find the one to fix.");
