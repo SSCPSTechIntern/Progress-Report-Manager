@@ -115,11 +115,9 @@ function leaveDevMode() {
 }
 
 /**
- * The purpose of this is the bring the user back to the beginning and to turn
- * off "devMode".
+ * The purpose of this is to grab data from spreadsheet and insert it into
+ * a drop-down select in HTML file.
  *
- * changes the property to disable "devMode"
- * load Sidebar01.html
  */
 function getOptionsFromGS() {
   //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
