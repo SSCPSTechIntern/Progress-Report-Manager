@@ -209,8 +209,8 @@ function GetConfigGradeTermStandards(passedGrade, passedTerm) {
   arrayOfStandards.push("ERROR: arrayOfStandards initialized, but not changed.");
   switch (passedTerm) {
     // this first case is just for testing, be sure to keep it as "X1" in production
-    //case "X1":
-    case "Q3":
+    case "X1":
+    //case "Q3":
       if (passedGrade == '3') {
         var arrayOfStandards = [];
         arrayOfStandards.push("Standard 7 for 3rd graders.");

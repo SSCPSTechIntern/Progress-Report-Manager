@@ -35,7 +35,7 @@
 <!-- PAGE CONTENT -->
 <h1>Start Page</h1>
 <div class="sidebar main">
-  <div class="block">
+  <div class="infoblock">
     WORK IN PROGRESS - DO NOT USE!!!!!
     <br />
     <br />
@@ -44,27 +44,14 @@
     <br />
     <hr>
   </div>
+  <div class="notes">
+    <br />
+    Please click refresh if data on any sheet has changed.
+    <input type="button" value="Refresh" id="refreshoptions"
+      onclick="getSelectFromJSArray();" />
+      <hr>
+  </div>
   <div class="dropdowns">
-    Simple HTML
-    <br>
-    <select name="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="fiat">Fiat</option>
-      <option value="audi">Audi</option>
-    </select>
-    <hr>
-    Javascript within HTML
-    <br>
-    <select id="selectNumber">
-        <option>Choose a number</option>
-        <script>
-            var myArray = new Array("1", "2", "3", "4", "5");
-            for(i=0; i<myArray.length; i++) {
-                document.write('<option value="' + myArray[i] +'">' + myArray[i] + '</option>');
-            }
-        </script>
-    </select>
     <hr>
     Javascript from GS
     <br>
@@ -100,17 +87,22 @@
 
     google.script.run
       .withFailureHandler(onFailure)
-      .withSuccessHandler(injectOptionsFromJSArray)
+      .withSuccessHandler(setOptionsFromJSArray)
       .getOptionsFromGS();
   };
 
-  window.injectOptionsFromJSArray = function(argReturnedData) {
+  window.setOptionsFromJSArray = function(argReturnedData) {
     var selectFromJSArrayElement = document.getElementById("selectFromJSArray");
+    selectFromJSArrayElement.disabled = true;
+    for(var j = 0; j < selectFromJSArrayElement.length + 20; j++) {
+      selectFromJSArrayElement.remove(j);
+    };
     for(var i = 0; i < argReturnedData.length; i++) {
       var option = document.createElement("option");
       option.text = argReturnedData[i];
       selectFromJSArrayElement.add(option);
     };
+    selectFromJSArrayElement.disabled = false;
   };
 
   window.onFailure = function(err) {

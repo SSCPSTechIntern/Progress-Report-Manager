@@ -43,7 +43,7 @@
 <div class="sidebar main">
     <div class="block">
       BE CAREFUL!<br />
-      
+
     </div>
 </div>
 
@@ -52,6 +52,29 @@
     onclick="google.script.run.leaveDevModeJS()" />
   <input type="button" value="Close" onclick="google.script.host.close()" />
 </div>
+
+  <div class="dropdowns">
+    Simple HTML
+    <br>
+    <select name="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <hr>
+    Javascript within HTML
+    <br>
+    <select id="selectNumber">
+        <option>Choose a number</option>
+        <script>
+            var myArray = new Array("1", "2", "3", "4", "5");
+            for(i=0; i<myArray.length; i++) {
+                document.write('<option value="' + myArray[i] +'">' + myArray[i] + '</option>');
+            }
+        </script>
+    </select>
+  </div>
 
 <!-- FANCY JAVASCRIPT STUFF -->
 <script>
