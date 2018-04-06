@@ -1,5 +1,5 @@
 <!-- This is the first page for any workflow of this plug-in. -->
-
+<body onload = "getSelectFromJSArray()">
 <!-- FORMATING STYPE STUFF -->
 <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
 <!-- The CSS package above applies Google styling to buttons and other elements. -->
@@ -54,7 +54,7 @@
       <option value="audi">Audi</option>
     </select>
     <hr>
-    Javascript
+    Javascript within HTML
     <br>
     <select id="selectNumber">
         <option>Choose a number</option>
@@ -66,23 +66,56 @@
         </script>
     </select>
     <hr>
+    Javascript from GS
+    <br>
+    <select id="selectFromJSArray">
+        <option> Choose a option </option>
+    </select >
+    <hr>
   </div>
 </div>
 
 <div class="sidebar bottom">
   <input type="button" value="Dev On" id="enter-devmode"
-    onclick="confirmDevModeJS();" />
+    onclick="confirmDevModeSB();" />
   <input type="button" value="Dev Off" id="leave-devmode"
-    onclick="leaveDevModeJS()" />
+    onclick="leaveDevModeSB()" />
   <input type="button" value="Close" onclick="google.script.host.close()" />
 </div>
+</body>
 
 <!-- FANCY JAVASCRIPT STUFF -->
 <script>
-  function confirmDevModeJS() {
+  function confirmDevModeSB() {
     google.script.run.confirmDevMode();
   }
-  function leaveDevModeJS() {
+  function leaveDevModeSB() {
     google.script.run.leaveDevMode();
   }
-</script>
+
+
+  //start code for selectFromJSArray element
+  function getSelectFromJSArray() {
+    console.log('getSelectFromJSArray ran!');
+
+    google.script.run
+      .withFailureHandler(onFailure)
+      .withSuccessHandler(injectOptionsFromJSArray)
+      .getOptionsFromGS();
+  };
+
+  window.injectOptionsFromJSArray = function(argReturnedData) {
+    var selectFromJSArrayElement = document.getElementById("selectFromJSArray");
+    for(var i = 0; i < argReturnedData.length; i++) {
+      var option = document.createElement("option");
+      option.text = argReturnedData[i];
+      selectFromJSArrayElement.add(option);
+    };
+  };
+
+  window.onFailure = function(err) {
+    alert('There was an error! ' + err.message);
+  };
+  //end code for selectFromJSArray element
+
+</script >

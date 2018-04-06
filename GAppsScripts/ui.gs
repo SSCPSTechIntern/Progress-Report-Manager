@@ -81,7 +81,7 @@ function confirmDevMode() {
         userProperties.setProperty('DEV_MODE', '1');
         var propUserDevMode = '1';
       } else {
-        ui.alert('Incorrect value, are you sure you want to got to Dev Mode?');
+        ui.alert('Incorrect value, are you sure you want to go to Dev Mode?');
         userProperties.setProperty('DEV_MODE', '0');
         var propUserDevMode = '0';
       }
@@ -112,4 +112,17 @@ function leaveDevMode() {
   var propUserDevMode = '0';
   SpreadsheetApp.getUi().alert('Dev Mode disabled.');
   showSidebar();
+}
+
+/**
+ * The purpose of this is the bring the user back to the beginning and to turn
+ * off "devMode".
+ *
+ * changes the property to disable "devMode"
+ * load Sidebar01.html
+ */
+function getOptionsFromGS() {
+  //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
+  var buildArray = new Array("A", "B", "C", "D", "E","F");
+  return (buildArray);
 }
