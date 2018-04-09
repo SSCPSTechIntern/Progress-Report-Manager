@@ -126,13 +126,11 @@ function leaveDevMode() {
  *
  */
 function getSelectTermOptionsFromGS() {
-  //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
-  //var buildArray = new Array("A", "B", "C", "D", "E","F");
-  var dataArrayFromSheet = getVariablesFromSheet('Standards Config');
+  var dataArrayFromSheet = getVariablesFromSheet('Static Config');
   var buildArray = [];
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
-    if (dataArrayFromSheet[i][1] == 'X1') {
-      buildArray.push(dataArrayFromSheet[i][2]);
+    if (dataArrayFromSheet[i][0] == 'terms') {
+      buildArray.push(dataArrayFromSheet[i][1]);
     }
   };
   return (buildArray);

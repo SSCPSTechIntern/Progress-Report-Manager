@@ -120,7 +120,7 @@ function GetConfig(whichConfig) {
 
   // defaut value
   var foundConfig = "ERROR: initialized foundConfig, but not changed by switch/case.";
-
+  // now return config based on what asked
   switch (whichConfig) {
     case "templateGrade0K":
       var foundConfig = templateGrade0K;
@@ -169,7 +169,58 @@ function GetConfig(whichConfig) {
  *
  */
 function GetConfigMisc(whichConfig) {
-  // find value from sheet
+  // get configs from sheet (these don't need UI change, can be in sheet only)
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var templateGrade0K = extractFrom2DArraySingleValue(dataArrayFromSheet, "templateGrade0K");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var templateGrade01 = extractFrom2DArraySingleValue(dataArrayFromSheet, "templateGrade01");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var templateGrade02 = extractFrom2DArraySingleValue(dataArrayFromSheet, "templateGrade02");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var templateGrade03 = extractFrom2DArraySingleValue(dataArrayFromSheet, "templateGrade03");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var templateGrade04 = extractFrom2DArraySingleValue(dataArrayFromSheet, "templateGrade04");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var currentYear = extractFrom2DArraySingleValue(dataArrayFromSheet, "currentYear");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var currentTerm = extractFrom2DArraySingleValue(dataArrayFromSheet, "currentTerm");
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  var nextTerm = extractFrom2DArraySingleValue(dataArrayFromSheet, "nextTerm");
+
+  // defaut value
+  var foundConfig = "ERROR: initialized foundConfig, but not changed by switch/case.";
+
+  // now return config based on what asked
+  switch (whichConfig) {
+    case "templateGrade0K":
+      var foundConfig = templateGrade0K;
+      break;
+    case "templateGrade01":
+      var foundConfig = templateGrade01;
+      break;
+    case "templateGrade02":
+      var foundConfig = templateGrade02;
+      break;
+    case "templateGrade03":
+      var foundConfig = templateGrade03;
+      break;
+    case "templateGrade04":
+      var foundConfig = templateGrade04;
+      break;
+    case "currentYear":
+      var foundConfig = currentYear;
+      break;
+    case "currentTerm":
+      var foundConfig = currentTerm;
+      break;
+    case "nextTerm":
+      var foundConfig = nextTerm;
+      break;
+    default:
+      var foundConfig = "ERROR: asking for config that is not found.";
+      break;
+   }
+  return foundConfig;
 }
 
 

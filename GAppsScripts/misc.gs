@@ -65,8 +65,6 @@ function ChangeStringAllReportsPerPod() {
  *
  */
 function getOptionsFromGS() {
-  //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
-  //var buildArray = new Array("A", "B", "C", "D", "E","F");
   var dataArrayFromSheet = getVariablesFromSheet('Standards Config');
   var buildArray = [];
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
@@ -75,4 +73,13 @@ function getOptionsFromGS() {
     }
   };
   return (buildArray);
+}
+
+/**
+ * The purpose of this is to test code for getting individual configs from sheets
+ *
+ */
+function popupConfigItem() {
+  var pleaseFindConfig = GetConfigMisc('templateGrade02');
+  SpreadsheetApp.getUi().alert('Found config is:  ' + pleaseFindConfig);
 }

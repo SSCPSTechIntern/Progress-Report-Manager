@@ -40,16 +40,17 @@
  *
  */
 function CreateAddReports() {
-  //get needed variables
-  var currentYear = GetConfig("currentYear");
-  var currentTerm = GetConfig("currentTerm");
+  //get needed variables "Misc Variables"
+  var currentYear = GetConfigMisc("currentYear");
+  var currentTerm = GetConfigMisc("currentTerm");
+  var templateGrade0K = GetConfigMisc('templateGrade0K');
+  var templateGrade01 = GetConfigMisc('templateGrade01');
+  var templateGrade02 = GetConfigMisc('templateGrade02');
+  var templateGrade03 = GetConfigMisc('templateGrade03');
+  var templateGrade04 = GetConfigMisc('templateGrade04');
+  //get pod related variables
   var currentClassName = GetConfig("currentClassName");
   var currentClassFolderObject = GetConfig("currentClassFolderObject");
-  var templateGrade0K = GetConfig('templateGrade0K');
-  var templateGrade01 = GetConfig('templateGrade01');
-  var templateGrade02 = GetConfig('templateGrade02');
-  var templateGrade03 = GetConfig('templateGrade03');
-  var templateGrade04 = GetConfig('templateGrade04');
 
   //now do stuff
   //SpreadsheetApp.getUi().alert(currentClassName);
@@ -114,9 +115,10 @@ function CreateAddReports() {
  *
  */
 function SetStudentPodNames() {
-  //get needed variables
-  var currentYear = GetConfig("currentYear");
-  var currentTerm = GetConfig("currentTerm");
+  //get needed variables "Misc Variables"
+  var currentYear = GetConfigMisc("currentYear");
+  var currentTerm = GetConfigMisc("currentTerm");
+  //get pod related variables
   var currentClassName = GetConfig("currentClassName");
   var currentClassFolderObject = GetConfig("currentClassFolderObject");
 
@@ -151,11 +153,15 @@ function SetStudentPodNames() {
  *
  */
 function ArchiveTerm() {
-  var currentTerm = GetConfig("currentTerm");
-  var nextTerm = GetConfig("nextTerm");
+  //get needed variables "Misc Variables"
+  var currentYear = GetConfigMisc("currentYear");
+  var currentTerm = GetConfigMisc("currentTerm");
+  var nextTerm = GetConfigMisc("nextTerm");
+  //get pod related variables
   var currentClassName = GetConfig("currentClassName");
   var currentClassFolderObject = GetConfig("currentClassFolderObject"); // was thisQuarterFolderObject
   var currentClassLevel = GetConfig("currentClassLevel");
+
   SpreadsheetApp.getUi().alert('Started archiving Progress Reports for ' + currentClassName + '.');
   var foundTermArchiveFolder = false;
   var currentArchiveFolder;
@@ -234,8 +240,10 @@ function ArchiveTerm() {
 //  temp folder.
 //
 function SetMathSkills() {
-  var currentYear = GetConfig("currentYear");
-  var currentTerm = GetConfig("currentTerm");
+  //get needed variables "Misc Variables"
+  var currentYear = GetConfigMisc("currentYear");
+  var currentTerm = GetConfigMisc("currentTerm");
+  //get pod related variables
   var currentClassName = GetConfig("currentClassName");
   var currentClassFolderObject = GetConfig("currentClassFolderObject"); // was thisQuarterFolderObject
   var currentClassLevel = GetConfig("currentClassLevel");
