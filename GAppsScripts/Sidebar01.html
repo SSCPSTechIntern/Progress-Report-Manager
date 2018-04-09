@@ -43,10 +43,12 @@
     <br />
     <br />
     <hr>
-    <p>Current Term: <select id="selectTerm">
+    <p>Current Term: <select id="selectTermCurrent">
       <option> Choose term </option>
     </select ></p>
-
+    <p>Next Term: <select id="selectTermNext">
+      <option> Choose term </option>
+    </select ></p>
   </div>
 </div>
 
@@ -72,22 +74,23 @@
    *
    */
   function refreshSelectsFromSheet() {
-    getSelectTerm();
+    getSelectTermCurrent();
+    getSelectTermNext();
   };
 
   /**
-   * The purpose of this is to refresh available options all selects from appropriate sheets.
+   * The purpose of this populate options for Current Term select element.
    *
    */
-  function getSelectTerm() {
+  function getSelectTermCurrent() {
     google.script.run
-      .withFailureHandler(onSelectTermFailure)
-      .withSuccessHandler(setSelectTermOptions)
-      .getSelectTermOptionsFromGS();
+      .withFailureHandler(onSelectTermCurrentFailure)
+      .withSuccessHandler(setSelectTermCurrentOptions)
+      .getSelectTermOptionsFromSheet();
   };
 
-  window.setSelectTermOptions = function(argReturnedData) {
-    var selectTermElement = document.getElementById("selectTerm");
+  window.setSelectTermCurrentOptions = function(argReturnedData) {
+    var selectTermElement = document.getElementById("selectTermCurrent");
     selectTermElement.options.length = 0;
     for(var i = 0; i < argReturnedData.length; i++) {
       var option = document.createElement("option");
@@ -96,8 +99,33 @@
     };
   };
 
-  window.onSelectTermFailure = function(err) {
-    alert('There was an error getting the Terms! ' + err.message);
+  window.onSelectTermCurrentFailure = function(err) {
+    alert('There was an error getting terms for Current Term! ' + err.message);
+  };
+
+  /**
+   * The purpose of this populate options for Next Term select element.
+   *
+   */
+  function getSelectTermNext() {
+    google.script.run
+      .withFailureHandler(onSelectTermNextFailure)
+      .withSuccessHandler(setSelectTermNextOptions)
+      .getSelectTermOptionsFromSheet();
+  };
+
+  window.setSelectTermNextOptions = function(argReturnedData) {
+    var selectTermElement = document.getElementById("selectTermNext");
+    selectTermElement.options.length = 0;
+    for(var i = 0; i < argReturnedData.length; i++) {
+      var option = document.createElement("option");
+      option.text = argReturnedData[i];
+      selectTermElement.add(option);
+    };
+  };
+
+  window.onSelectTermNextFailure = function(err) {
+    alert('There was an error getting terms for Next Term! ' + err.message);
   };
 
 </script >

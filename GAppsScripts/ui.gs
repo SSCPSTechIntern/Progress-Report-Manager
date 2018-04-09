@@ -125,7 +125,7 @@ function leaveDevMode() {
  * and insert it into a drop-down select in HTML file.
  *
  */
-function getSelectTermOptionsFromGS() {
+function getSelectTermOptionsFromSheet() {
   var dataArrayFromSheet = getVariablesFromSheet('Static Config');
   var buildArray = [];
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
