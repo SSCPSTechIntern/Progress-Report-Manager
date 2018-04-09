@@ -1,5 +1,5 @@
-<!-- This is the first page for any workflow of this plug-in. -->
-
+<!-- This is the dev page for testing ideas of this plug-in. -->
+<body onload = "getSelectFromJSArray()">
 <!-- FORMATING STYPE STUFF -->
 <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
 <!-- The CSS package above applies Google styling to buttons and other elements. -->
@@ -41,19 +41,11 @@
 <!-- PAGE CONTENT -->
 <h1>Dev Mode Enabled</h1>
 <div class="sidebar main">
-    <div class="block">
-      BE CAREFUL!<br />
+  <br />
+  BE CAREFUL!
+  <br />
 
-    </div>
-</div>
-
-<div class="sidebar bottom">
-  <input type="button" value="Dev Off" id="leave-devmode"
-    onclick="google.script.run.leaveDevModeJS()" />
-  <input type="button" value="Close" onclick="google.script.host.close()" />
-</div>
-
-  <div class="dropdowns">
+  <div class="dropdownsregular">
     Simple HTML
     <br>
     <select name="cars">
@@ -76,11 +68,59 @@
     </select>
   </div>
 
+  <div class="dropdownJSwithRefresh">
+    <br />
+    Please click refresh if data on any sheet has changed.
+    <input type="button" value="Refresh" id="refreshoptions"
+      onclick="getSelectFromJSArray();" />
+      <hr>
+    <hr>
+    Javascript from GS
+    <br>
+    <select id="selectFromJSArray">
+        <option> Choose a option </option>
+    </select >
+    <hr>
+  </div>
+
+</div>
+
+<div class="sidebar bottom">
+  <input type="button" value="Dev Off" id="leave-devmode"
+    onclick="leaveDevModeSB();" />
+  <input type="button" value="Close" onclick="google.script.host.close()" />
+</div>
+</body>
+
 <!-- FANCY JAVASCRIPT STUFF -->
 <script>
+  //*****************************************
+  //start code for selectFromJSArray element
+  //*****************************************
+  function getSelectFromJSArray() {
+    google.script.run
+      .withFailureHandler(onFailure)
+      .withSuccessHandler(setOptionsFromJSArray)
+      .getOptionsFromGS();
+  };
+
+  window.setOptionsFromJSArray = function(argReturnedData) {
+    var selectFromJSArrayElement = document.getElementById("selectFromJSArray");
+    selectFromJSArrayElement.options.length = 0;
+    for(var i = 0; i < argReturnedData.length; i++) {
+      var option = document.createElement("option");
+      option.text = argReturnedData[i];
+      selectFromJSArrayElement.add(option);
+    };
+  };
+
+  window.onFailure = function(err) {
+    alert('There was an error! ' + err.message);
+  };
+
   // function below is just "wrapper" around the button to show how to call other stuff
-  function leaveDevModeJS() {
-    //alert('In leaveDevModeJS');
+  function leaveDevModeSB() {
     google.script.run.leaveDevMode();
   }
+
 </script>

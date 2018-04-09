@@ -1,3 +1,8 @@
+// various property statements
+//var scriptProperties = PropertiesService.getScriptProperties();
+//var userProperties = PropertiesService.getUserProperties();
+//var documentProperties = PropertiesService.getDocumentProperties();
+
 // this function just removes "Copy of" from the beginning of all files in a folder, if it exists
 function RemoveCopyOfAllFilesInFolder() {
   //get needed variables
@@ -51,4 +56,23 @@ function ChangeStringAllReportsPerPod() {
     }
     SpreadsheetApp.getUi().alert('Finished replacement:  ' + currentClassName + '.');
   }
+}
+
+
+/**
+ * The purpose of this is a sample of grabbing data from spreadsheet
+ * and insert it into a drop-down select in HTML file.
+ *
+ */
+function getOptionsFromGS() {
+  //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
+  //var buildArray = new Array("A", "B", "C", "D", "E","F");
+  var dataArrayFromSheet = getVariablesFromSheet('Standards Config');
+  var buildArray = [];
+  for(var i = 0; i < dataArrayFromSheet.length; i++) {
+    if (dataArrayFromSheet[i][1] == 'X1') {
+      buildArray.push(dataArrayFromSheet[i][2]);
+    }
+  };
+  return (buildArray);
 }

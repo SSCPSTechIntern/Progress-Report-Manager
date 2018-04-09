@@ -6,13 +6,15 @@
  *     running in, inspect e.authMode.
  */
 function onOpen(e) {
+  // create menu item to open Plugin sidebar
   SpreadsheetApp.getUi().createAddonMenu()
       .addItem('Start', 'showSidebar')
       .addToUi();
-  // get all properties in each of the three property stores.
-  //var scriptProperties = PropertiesService.getScriptProperties();
-  //var userProperties = PropertiesService.getUserProperties();
-  //var documentProperties = PropertiesService.getDocumentProperties();
+  // set DEV_MODE property to 0 because that page doesn't load by default
+  var userProperties = PropertiesService.getUserProperties();
+  var propUserDevMode = userProperties.getProperty('DEV_MODE');
+  userProperties.setProperty('DEV_MODE', '0');
+  var propUserDevMode = '0';
 }
 
 /**
@@ -35,6 +37,10 @@ function showSidebar() {
   var ui = HtmlService.createHtmlOutputFromFile('Sidebar01')
       .setTitle('Progress Report Start');
   SpreadsheetApp.getUi().showSidebar(ui);
+  var userProperties = PropertiesService.getUserProperties();
+  var propUserDevMode = userProperties.getProperty('DEV_MODE');
+  userProperties.setProperty('DEV_MODE', '0');
+  var propUserDevMode = '0';
 }
 
 /**
@@ -44,6 +50,10 @@ function showSidebarDEV() {
   var ui = HtmlService.createHtmlOutputFromFile('SidebarDEV')
       .setTitle('Development Sidebar');
   SpreadsheetApp.getUi().showSidebar(ui);
+  var userProperties = PropertiesService.getUserProperties();
+  var propUserDevMode = userProperties.getProperty('DEV_MODE');
+  userProperties.setProperty('DEV_MODE', '1');
+  var propUserDevMode = '1';
 }
 
 
@@ -54,15 +64,12 @@ function showSidebarDEV() {
  * or for production use.  If the "devMode" property is enabled, no password is
  * requested.
  *
- * changes the property to enable "devMode"
- * load the SidebarDEV
+ * changes the property & variable to enable "devMode", loads the SidebarDEV
  */
 function confirmDevMode() {
-  //SpreadsheetApp.getUi().alert('In confirmDevMode().');
   // if DevMode already enabled, don't need to do anything, but should at least tell the user
   var userProperties = PropertiesService.getUserProperties();
   var propUserDevMode = userProperties.getProperty('DEV_MODE');
-  //SpreadsheetApp.getUi().alert('Found: ' + propUserDevMode);
   if (propUserDevMode != '1') {
     var pwdVar = 'tworkshop';
     var ui = SpreadsheetApp.getUi();
@@ -72,16 +79,17 @@ function confirmDevMode() {
         + '\nunless you know what they do.  BE CAREFUL!'
         + '\nEnter password to enable:',
         ui.ButtonSet.OK_CANCEL);
-    // Process the user's response.
+    // grab the user's response.
     var devModeDialogResultButtonVal = devModeDialogResult.getSelectedButton();
     var devModeDialogResultTextVal = devModeDialogResult.getResponseText();
+    // process the user's response.
     if (devModeDialogResultButtonVal == ui.Button.OK) {
       // User clicked "OK".
       if (devModeDialogResultTextVal == pwdVar) {
         userProperties.setProperty('DEV_MODE', '1');
         var propUserDevMode = '1';
       } else {
-        ui.alert('Incorrect value, are you sure you want to go to Dev Mode?');
+        ui.alert('Incorrect value, Dev Mode not enabled.');
         userProperties.setProperty('DEV_MODE', '0');
         var propUserDevMode = '0';
       }
@@ -91,10 +99,8 @@ function confirmDevMode() {
     }
   }
   if (propUserDevMode != '1') {
-    //return 0
     showSidebar();
   } else {
-    //return 1
     showSidebarDEV();
   }
 }
@@ -110,16 +116,16 @@ function leaveDevMode() {
   var userProperties = PropertiesService.getUserProperties();
   userProperties.setProperty('DEV_MODE', '0');
   var propUserDevMode = '0';
-  SpreadsheetApp.getUi().alert('Dev Mode disabled.');
+  //SpreadsheetApp.getUi().alert('Dev Mode disabled.');
   showSidebar();
 }
 
 /**
- * The purpose of this is to grab data from spreadsheet and insert it into
- * a drop-down select in HTML file.
+ * The purpose of this is a sample of grabbing data from spreadsheet
+ * and insert it into a drop-down select in HTML file.
  *
  */
-function getOptionsFromGS() {
+function getSelectTermOptionsFromGS() {
   //SpreadsheetApp.getUi().alert('Inside getOptionsFromGS().');
   //var buildArray = new Array("A", "B", "C", "D", "E","F");
   var dataArrayFromSheet = getVariablesFromSheet('Standards Config');
