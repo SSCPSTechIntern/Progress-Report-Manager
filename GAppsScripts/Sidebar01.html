@@ -94,9 +94,7 @@
   window.setOptionsFromJSArray = function(argReturnedData) {
     var selectFromJSArrayElement = document.getElementById("selectFromJSArray");
     selectFromJSArrayElement.disabled = true;
-    for(var j = 0; j < selectFromJSArrayElement.length + 20; j++) {
-      selectFromJSArrayElement.remove(j);
-    };
+    selectFromJSArrayElement.options.length = 0;
     for(var i = 0; i < argReturnedData.length; i++) {
       var option = document.createElement("option");
       option.text = argReturnedData[i];
