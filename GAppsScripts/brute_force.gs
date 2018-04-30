@@ -65,9 +65,9 @@ function CreateAddReports() {
     for (i in data) {
       var currentStudent = data[i];
       var currentStudentPod = currentStudent[0];
-      var currentStudentName = currentStudent[1];
-      var currentStudentGrade = currentStudent[2];
-      var currentStudentLevel = currentStudent[3];
+      var currentStudentLevel = currentStudent[1];
+      var currentStudentName = currentStudent[2];
+      var currentStudentGrade = currentStudent[3];
       if (currentStudentPod == currentClassName) {
         //SpreadsheetApp.getUi().alert('Pod:  ' + currentStudentPod + ', Name:  ' + currentStudentName + ', Grade:  ' + currentStudentGrade);
         switch (currentStudentGrade) {
