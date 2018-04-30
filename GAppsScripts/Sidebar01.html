@@ -37,11 +37,7 @@
 <div class="sidebar main">
   <div class="infoblock">
     WORK IN PROGRESS - DO NOT USE!!!!!
-    <br />
-    <br />
     Screen will be for instructions and buttons to do various steps.  Maybe change the sidebar depending on step?
-    <br />
-    <br />
     <hr>
     <p>Current Term: <select id="selectTermCurrent">
       <option> Choose term </option>
@@ -49,10 +45,14 @@
     <p>Next Term: <select id="selectTermNext">
       <option> Choose term </option>
     </select ></p>
+    <p>Pod: <select id="selectPod">
+      <option> Choose term </option>
+    </select ></p>
   </div>
 </div>
 
 <div class="sidebar bottom">
+  <hr>
   <input type="button" value="Dev On" id="enter-devmode"
     onclick="confirmDevModeSB();" />
   <input type="button" value="Close" onclick="google.script.host.close()" />
@@ -76,6 +76,7 @@
   function refreshSelectsFromSheet() {
     getSelectTermCurrent();
     getSelectTermNext();
+    getSelectPod();
   };
 
   /**
@@ -126,6 +127,31 @@
 
   window.onSelectTermNextFailure = function(err) {
     alert('There was an error getting terms for Next Term! ' + err.message);
+  };
+ 
+ /**
+   * The purpose of this populate options for Pod select element.
+   *
+   */
+  function getSelectPod() {
+    google.script.run
+      .withFailureHandler(onSelectPodFailure)
+      .withSuccessHandler(setSelectPodOptions)
+      .getSelectPodOptionsFromSheet();
+  };
+
+  window.setSelectPodOptions = function(argReturnedData) {
+    var selectPodElement = document.getElementById("selectPod");
+    selectPodElement.options.length = 0;
+    for(var i = 0; i < argReturnedData.length; i++) {
+      var option = document.createElement("option");
+      option.text = argReturnedData[i];
+      selectPodElement.add(option);
+    };
+  };
+
+  window.onSelectPodFailure = function(err) {
+    alert('There was an error getting pods for Next Pod! ' + err.message);
   };
 
 </script >
