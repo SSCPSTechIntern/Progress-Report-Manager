@@ -121,7 +121,7 @@ function leaveDevMode() {
 }
 
 /**
- * The purpose of this is a sample of grabbing data from spreadsheet
+ * The purpose of this is a sample of grabbing data from spreadsheet 
  * and insert it into a drop-down select in HTML file.
  *
  */
@@ -133,5 +133,20 @@ function getSelectTermOptionsFromSheet() {
       buildArray.push(dataArrayFromSheet[i][1]);
     }
   };
+  return (buildArray);
+}
+
+/**
+ * The purpose of this is a sample of grabbing data from spreadsheet 
+ * and insert it into a drop-down select in HTML file.
+ *
+ */
+function getSelectPodOptionsFromSheet() {
+  var dataArrayFromSheet = getVariablesFromSheet('Pod Config');
+  var buildArray = [];
+  for(var i = 1; i < dataArrayFromSheet.length; i++) {
+    buildArray.push(dataArrayFromSheet[i][0]);
+  };
+  SpreadsheetApp.getUi().alert('Dev Mode disabled: ' + buildArray);
   return (buildArray);
 }
