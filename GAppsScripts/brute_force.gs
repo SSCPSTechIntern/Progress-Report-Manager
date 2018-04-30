@@ -9,13 +9,13 @@
  *    3) Check/Update templates' variables for each grade in GetConfig().
  *    4) Check/Update currentYear & currentTerm variables in GetConfig().
  *    5) Check/Update Pod Names, folder id & level variables in GetConfig().
- *    6) For each Pod, run CreateAddReports() and then SetStudentPodNames().
+ *    6) For each Pod, run CreateAddReports() and then SetStudentPodNames().   
  *       This is because Google will stop processing if asked to do too much.
  *
  * Usage - ARCHIVE term after teachers done (meaning archive Current Term):
  *    1) Run the export using GAM.  Found at:  https://github.com/SSCPS/Google-Apps-Script-Apps/tree/master/Progress-Report-Manager/downloadprint
  *    2) For each Pod, run ArchiveTerm().  Broken record...this is because Google likes smaller chunks to process.
- *    3) Change permissions so that reports in Pod folder & archive folder are read only by Level.
+ *    3) Change permissions so that reports in Pod folder & archive folder are read only by Level.  
  *    4) Chnage permissions so that the Archive Folder & contents are owned by admin.school@sscps.org.
  *
  * Usage - NEW TERM creation:
@@ -68,6 +68,7 @@ function CreateAddReports() {
       var currentStudentLevel = currentStudent[1];
       var currentStudentName = currentStudent[2];
       var currentStudentGrade = currentStudent[3];
+      
       if (currentStudentPod == currentClassName) {
         //SpreadsheetApp.getUi().alert('Pod:  ' + currentStudentPod + ', Name:  ' + currentStudentName + ', Grade:  ' + currentStudentGrade);
         switch (currentStudentGrade) {
@@ -232,9 +233,9 @@ function ArchiveTerm() {
  *
  */
 //!!IMPORTANT INFO ABOUT ERRORS!!
-//  Sometimes teachers accidentally alter the tables.  Doing so will cause this function to error out.
+//  Sometimes teachers accidentally alter the tables.  Doing so will cause this function to error out.  
 //  The only way to find the problem file is to move all files to temp folder & process them one at a time.
-//  To fix, copy a known good table to the problem file(s).
+//  To fix, copy a known good table to the problem file(s).  
 //
 //  Two gotchas:  removing comments if copied from another student.  And leaving processed files in the
 //  temp folder.
