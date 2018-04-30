@@ -18,24 +18,26 @@
  */
 function GetConfig(whichConfig) {
   // List docid for template files for each grade
-  var templateGrade0K = '1hbNwl98lfYCAyXcQ8abDydDtLrVcwFMBXstgbEHS_qw';
-  var templateGrade01 = '1oyNmotft9HN0cBbI6C-7L5iG4OtHTzh64yo_2uJaqn4';
-  var templateGrade02 = '1zakG7IyWZMqP0uAkZSIsW-1mZXJUMPwl6o0Qs6YIlA0';
-  var templateGrade03 = '1RURdvjx74G4-44YUsAxKrHEsZEnnWxcw4gwdTHLNrkE';
-  var templateGrade04 = '1wxgKgut6Oh1448Z-hJq7tDkStvI_GOOtU0AVY0aFN_c';
-
+  // No longer used, look in GetConfigMisc function
+  //var templateGrade0K = '1srIFFH_TM6MBj-CZawxgs79KDSgKpXc3JyzEOvG2v4Q';
+  //var templateGrade01 = '1waNz8LI8pYESFenXZfc5NzaAOXVd7CDO_hBnhJcjaEY';
+  //var templateGrade02 = '19SjgQ_WKtZdrLnXky3HC6FHCA2tAbO_qSeTr5q4yi-I';
+  //var templateGrade03 = '1R4DhyvI9x4ONlKg919V-kK25Y9LoCA01w3T4wX3d9OE';
+  //var templateGrade04 = '1EuYJdiJyncinR2K66g_APpIkd0KrWK1fkvXvW-7Bw_Q';
+                      
   // What is current year? FY####
   var currentYear = 'FY2018';
 
   // What are terms?
+  // No longer used, look in GetConfigMisc function
   //var currentTerm = 'S1';
   //var nextTerm = 'S2';
   //var currentTerm = 'Q1';
   //var nextTerm = 'Q2';
   //var currentTerm = 'Q2';
   //var nextTerm = 'Q3';
-  var currentTerm = 'Q3';
-  var nextTerm = 'Q4';
+  //var currentTerm = 'Q3';
+  //var nextTerm = 'Q4';
   //var currentTerm = 'Q4';
   //var nextTerm = 'NA';
   //var currentTerm = 'S1';
@@ -44,77 +46,33 @@ function GetConfig(whichConfig) {
   //var nextTerm = 'NA';
 
   //Folder Vars - Testing
-  var currentClassName = "Dee & Pam's Pod";
-  var currentClassFolderID = '0B8RgM3B2REzvWUhUOEQyMC1qSHc';  // Dee's Pod
-  var currentClassLevel = "L2";
-
+  //var currentClassName = "Dee & Pam's Pod";
+  //var currentClassFolderID = '0B8RgM3B2REzvWUhUOEQyMC1qSHc';  // Dee's Pod
+  //var currentClassLevel = "L2";
+  
   //Folder Vars - Kindergarten
-  //var currentClassName = "Amy's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvOUp4NzZ6aVY5Z1k';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Kassandra's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvOWdhSE9fNW9jcUE';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Kristen E's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvQkNnTGdRcVdjMVk';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Melissa's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvci1fMjJ4ZHdtQlU';
-  //var currentClassLevel = "L1";
-
+  var currentClassName = "Jared's Pod";
+  var currentClassFolderID = "1hJF0pvKLPQ9BQnvJTdIEhk-6uJiOJM1q";
+  var currentClassLevel = "L1";
+  
   //Folder Vars - 1st & 2nd Graders
-  //var currentClassName = "Arbrenne's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvQTRQalVoSkl4T2c';
+  //var currentClassName = "Barney's Pod";
+  //var currentClassFolderID = "18GM3zMSXd66dIr1WMUjFpsxUu3zcNRIE";
   //var currentClassLevel = "L1";
-
-  //var currentClassName = "Deana's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvLUJuYUVUMFBTMVk';
+  
+  //var currentClassName = "Ryan's Pod";
+  //var currentClassFolderID = "181Bvtm-xDdfORDqtJIUdnBWtR--5Xdbl";
   //var currentClassLevel = "L1";
-
-  //var currentClassName = "Derek's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvdGI3RWZxWm02Zjg';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Jessica's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvb3ROSGFZWlNCYUU';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "June's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvS1M3TmJrVVNZVDg';
-  //var currentClassLevel = "L1";
-
-  //var currentClassName = "Sheina's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvLXNTdTNjMFY2a1U';
-  //var currentClassLevel = "L1";
-
+  
   //Folder Vars - 3rd & 4th Graders
-  //var currentClassName = "Darlene's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvS21mTFJuYmpJc1U';
+  //var currentClassName = "Rio's Pod";
+  //var currentClassFolderID = "1jkvT1-z8MucPmfamxAZ4Qsx9Vu4d_wKD";
   //var currentClassLevel = "L2";
-
-  //var currentClassName = "John's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvQkZyck1uZzFLNGM';
+  
+  //var currentClassName = "Harambe's Pod";
+  //var currentClassFolderID = "1l7qxOdfpd9xoF-kGSVzTil-PbgY0tFnn";
   //var currentClassLevel = "L2";
-
-  //var currentClassName = "Kelsey's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvaHdxQTFZVlpKU2s';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Kristen H's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvNnVsV2dXeGlyb3M';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Mariah's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvcjlQMVY3MHF0bGs';
-  //var currentClassLevel = "L2";
-
-  //var currentClassName = "Nicole's Pod";
-  //var currentClassFolderID = '0B8RgM3B2REzvRkJkWF9CVWtrRjA';
-  //var currentClassLevel = "L2";
-
+  
   // now create the variable for when called
   var currentClassFolderObject = DriveApp.getFolderById(currentClassFolderID);
 
