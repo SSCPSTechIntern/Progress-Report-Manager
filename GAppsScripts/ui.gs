@@ -150,3 +150,29 @@ function getSelectPodOptionsFromSheet() {
   SpreadsheetApp.getUi().alert('Dev Mode disabled: ' + buildArray);
   return (buildArray);
 }
+
+function setCurrentTermIndex() {
+  var dataArrayFromSheet = getVariablesFromSheet('Static Config');
+  var dataArrayFromSheet2 = getVariablesFromSheet('Misc Config');
+  var buildArray = [];
+  for(var i = 0; i < dataArrayFromSheet.length; i++) {
+    if (dataArrayFromSheet[i][0] == 'terms') {
+      buildArray.push(dataArrayFromSheet[i][1]);
+    }
+  };
+  for(var i = 0; i < dataArrayFromSheet2.length; i++) {
+    if (dataArrayFromSheet2[i][0] == 'currentTerm') {
+      var CurrentTerm = dataArrayFromSheet2[i][1]; 
+    }
+  };
+  for(var i = 0; i < buildArray.length; i++) { 
+    if (buildArray[i] == CurrentTerm) {
+      var NewCurrentTerm = buildArray[i]
+      var NewNextTerm = buildArray[i+1]
+      }
+  };
+  SpreadsheetApp.getUi().alert('Dev Mode disabled: Current term is ' + NewCurrentTerm + ' and the next term is ' + NewNextTerm);
+  return (NewCurrentTerm);
+}
+
+  
