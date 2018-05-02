@@ -147,32 +147,48 @@ function getSelectPodOptionsFromSheet() {
   for(var i = 1; i < dataArrayFromSheet.length; i++) {
     buildArray.push(dataArrayFromSheet[i][0]);
   };
-  SpreadsheetApp.getUi().alert('Dev Mode disabled: ' + buildArray);
   return (buildArray);
 }
 
-function setCurrentTermIndex() {
+/**
+ * The purpose of this is a sample of grabbing data from spreadsheet 
+ * and insert it into a drop-down select in HTML file.
+ *
+ */
+function getIndexCurrentTermOptionFromSheet() {
+  /** this stuff works!
+  var dataArrayFromSheet = getVariablesFromSheet('Pod Config');
+  var buildArray = [];
+  for(var i = 1; i < dataArrayFromSheet.length; i++) {
+    buildArray.push(dataArrayFromSheet[i][0]);
+  };
+  return (buildArray);
+  */
+
+  // this gets list of all terms
   var dataArrayFromSheet = getVariablesFromSheet('Static Config');
-  var dataArrayFromSheet2 = getVariablesFromSheet('Misc Config');
   var buildArray = [];
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
     if (dataArrayFromSheet[i][0] == 'terms') {
       buildArray.push(dataArrayFromSheet[i][1]);
     }
   };
+
+  // finds string for current term value
+  var dataArrayFromSheet2 = getVariablesFromSheet('Misc Config');
   for(var i = 0; i < dataArrayFromSheet2.length; i++) {
     if (dataArrayFromSheet2[i][0] == 'currentTerm') {
-      var CurrentTerm = dataArrayFromSheet2[i][1]; 
+      var CurrentTerm = dataArrayFromSheet2[i][1];
     }
   };
-  for(var i = 0; i < buildArray.length; i++) { 
+
+  // find index where current term value matches in buildArray
+  for(var i = 0; i < buildArray.length; i++) {
     if (buildArray[i] == CurrentTerm) {
-      var NewCurrentTerm = buildArray[i]
-      var NewNextTerm = buildArray[i+1]
+      var storedCurrentTermIndex = i;
       }
   };
-  SpreadsheetApp.getUi().alert('Dev Mode disabled: Current term is ' + NewCurrentTerm + ' and the next term is ' + NewNextTerm);
-  return (NewCurrentTerm);
-}
 
+  return (storedCurrentTermIndex);
   
+}
