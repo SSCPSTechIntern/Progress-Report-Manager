@@ -48,6 +48,9 @@
     <p>Pod: <select id="selectPod">
       <option> Choose term </option>
     </select ></p>
+    <p>Current Term Index: <select id="selectCurrentTermIndex">
+      <option> Choose term </option>
+    </select ></p>
   </div>
 </div>
 
@@ -77,6 +80,7 @@
     getSelectTermCurrent();
     getSelectTermNext();
     getSelectPod();
+    getIndexCurrentTerm();
   };
 
   /**
@@ -151,6 +155,31 @@
   };
 
   window.onSelectPodFailure = function(err) {
+    alert('There was an error getting pods for Next Pod! ' + err.message);
+  };
+  
+
+ /**
+   * The purpose of this populate options for index of currrent term.
+   *
+   */
+  function getIndexCurrentTerm() {
+    google.script.run
+      .withFailureHandler(onIndexCurrentTermFailure)
+      .withSuccessHandler(setIndexCurrentTermOptions)
+      .getIndexCurrentTermOptionFromSheet();
+  };
+
+  window.setIndexCurrentTermOptions = function(argReturnedData) {
+    //window.alert('Current Term Index: '+ argReturnedData);
+    var selectPodElement = document.getElementById("selectCurrentTermIndex");
+    selectPodElement.options.length = 0;
+    var option = document.createElement("option");
+    option.text = argReturnedData;
+    selectPodElement.add(option);
+  };
+
+  window.onIndexCurrentTermFailure = function(err) {
     alert('There was an error getting pods for Next Pod! ' + err.message);
   };
 
