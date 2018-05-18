@@ -19,7 +19,7 @@ function onOpen(e) {
 
 /**
  * Runs when the add-on is installed.
- *
+ * 
  * @param {object} e The event parameter for a simple onInstall trigger. To
  *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
  *     running in, inspect e.authMode. (In practice, onInstall triggers always
@@ -123,72 +123,88 @@ function leaveDevMode() {
 /**
  * The purpose of this is a sample of grabbing data from spreadsheet 
  * and insert it into a drop-down select in HTML file.
- *
  */
-function getSelectTermOptionsFromSheet() {
+function getSelectTermOptionsFromSheet(workingTerm) {
+  //SpreadsheetApp.getUi().alert('About to call getVariablesFromSheet in getSelectTermOptionsFromSheet.');
   var dataArrayFromSheet = getVariablesFromSheet('Static Config');
   var buildArray = [];
+  var retrievedindex = getIndexTermOptionFromSheet(workingTerm);
+  buildArray.push(retrievedindex);
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
     if (dataArrayFromSheet[i][0] == 'terms') {
       buildArray.push(dataArrayFromSheet[i][1]);
     }
-  };
+  }
   return (buildArray);
 }
 
 /**
- * The purpose of this is a sample of grabbing data from spreadsheet 
+ * The purpose of this is to grab selected pod from spreadsheet 
  * and insert it into a drop-down select in HTML file.
  *
  */
 function getSelectPodOptionsFromSheet() {
+  //SpreadsheetApp.getUi().alert('About to call getVariablesFromSheet in getSelectPodOptionsFromSheet.');
   var dataArrayFromSheet = getVariablesFromSheet('Pod Config');
   var buildArray = [];
   for(var i = 1; i < dataArrayFromSheet.length; i++) {
     buildArray.push(dataArrayFromSheet[i][0]);
-  };
+  }
   return (buildArray);
 }
 
 /**
- * The purpose of this is a sample of grabbing data from spreadsheet 
- * and insert it into a drop-down select in HTML file.
+ * The purpose of this is to get the index value of select term.
  *
  */
-function getIndexCurrentTermOptionFromSheet() {
-  /** this stuff works!
-  var dataArrayFromSheet = getVariablesFromSheet('Pod Config');
-  var buildArray = [];
-  for(var i = 1; i < dataArrayFromSheet.length; i++) {
-    buildArray.push(dataArrayFromSheet[i][0]);
-  };
-  return (buildArray);
-  */
-
-  // this gets list of all terms
+function getIndexTermOptionFromSheet(workingTerm) {
+  //SpreadsheetApp.getUi().alert('About to call getVariablesFromSheet in getIndexTermOptionFromSheet.');
   var dataArrayFromSheet = getVariablesFromSheet('Static Config');
   var buildArray = [];
   for(var i = 0; i < dataArrayFromSheet.length; i++) {
     if (dataArrayFromSheet[i][0] == 'terms') {
       buildArray.push(dataArrayFromSheet[i][1]);
     }
-  };
-
+  }
   // finds string for current term value
   var dataArrayFromSheet2 = getVariablesFromSheet('Misc Config');
   for(var i = 0; i < dataArrayFromSheet2.length; i++) {
-    if (dataArrayFromSheet2[i][0] == 'currentTerm') {
-      var CurrentTerm = dataArrayFromSheet2[i][1];
+    if (dataArrayFromSheet2[i][0] == workingTerm) {
+      var workinTerm = dataArrayFromSheet2[i][1];
     }
-  };
-
+  }
   // find index where current term value matches in buildArray
   for(var i = 0; i < buildArray.length; i++) {
-    if (buildArray[i] == CurrentTerm) {
-      var storedCurrentTermIndex = i;
+    if (buildArray[i] == workinTerm) {
+      var storedWorkingTermIndex = i;
       }
-  };
+  }
+  //SpreadsheetApp.getUi().alert('Finished name replacement:  ' + storedWorkingTermIndex + '.');
+  return (storedWorkingTermIndex);
+}
 
-  return (storedCurrentTermIndex);
-  
+
+/**
+ * The purpose of this is to write the Term select from HTML file
+ * to the nextTerm value in a sheet.
+ *
+ */
+function saveSelectedOptionToSheet(passedArray) {
+  SpreadsheetApp.getUi().alert('Passed array:  ' + passedArray);
+  var termToBeSaved = passedArray[0];
+  var whichCurrentNext = passedArray[1];
+  // find location to save
+  //SpreadsheetApp.getUi().alert('About to call getVariablesFromSheet in saveSelectedOptionToSheet.');
+  var dataArrayFromSheet = getVariablesFromSheet('Misc Config');
+  for(var i = 0; i < dataArrayFromSheet.length; i++) {
+    if (dataArrayFromSheet[i][0] == whichCurrentNext) {
+      var storedNextTermIndex = i;
+    }
+  }
+  // this saves to sheet
+  var destinationRange = "B" + (storedNextTermIndex+1);
+  var currentSpreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+  var currentSheet = currentSpreadSheet.getSheetByName("Misc Config");
+  currentSheet.getRange(destinationRange).setValue(termToBeSaved);
+  return (termToBeSaved);
 }
