@@ -39,21 +39,17 @@
     WORK IN PROGRESS - DO NOT USE!!!!!
     Screen will be for instructions and buttons to do various steps.  Maybe change the sidebar depending on step?
     <hr>
-    <p>Current Term: <select id="selectTermCurrent">
+    <p>Current Term: <select id="selectTermCurrent" onchange="saveSelectedTerm(currentTerm)">
       <option> Choose term </option>
     </select ></p>
-    <p>Next Term: <select id="selectTermNext">
+    <p>Next Term: <select id="selectTermNext" onchange="saveSelectedTerm(nextTerm)">
       <option> Choose term </option>
     </select ></p>
     <p>Pod: <select id="selectPod">
-      <option> Choose term </option>
-    </select ></p>
-    <p>Current Term Index: <select id="selectCurrentTermIndex">
-      <option> Choose term </option>
+      <option> Choose pod </option>
     </select ></p>
   </div>
 </div>
-
 <div class="sidebar bottom">
   <hr>
   <input type="button" value="Dev On" id="enter-devmode"
@@ -64,11 +60,12 @@
 
 <!-- FANCY JAVASCRIPT STUFF -->
 <script>
-  /**
-   * The purpose of this is to open SidebarDev.
-   *
-   */
-  function confirmDevModeSB() {
+
+/**
+ * The purpose of this is to open SidebarDev.
+ *
+ */
+function confirmDevModeSB() {
     google.script.run.confirmDevMode();
   }
 
@@ -80,7 +77,6 @@
     getSelectTermCurrent();
     getSelectTermNext();
     getSelectPod();
-    getIndexCurrentTerm();
   };
 
   /**
@@ -91,22 +87,28 @@
     google.script.run
       .withFailureHandler(onSelectTermCurrentFailure)
       .withSuccessHandler(setSelectTermCurrentOptions)
-      .getSelectTermOptionsFromSheet();
+      .getSelectTermOptionsFromSheet("currentTerm");
   };
 
-  window.setSelectTermCurrentOptions = function(argReturnedData) {
+  window.setSelectTermCurrentOptions = function(returnedOptionsArray) {
+    //alert('Passed in arguments ' + returnedOptionsArray);
+    var returnedIndexValue = returnedOptionsArray[0];
+    //alert('Extract index value ' + returnedIndexValue);
     var selectTermElement = document.getElementById("selectTermCurrent");
     selectTermElement.options.length = 0;
-    for(var i = 0; i < argReturnedData.length; i++) {
+    for(var i = 1; i < returnedOptionsArray.length; i++) {
       var option = document.createElement("option");
-      option.text = argReturnedData[i];
+      option.text = returnedOptionsArray[i];
       selectTermElement.add(option);
     };
+    selectTermElement.selectedIndex = returnedIndexValue;
   };
 
   window.onSelectTermCurrentFailure = function(err) {
     alert('There was an error getting terms for Current Term! ' + err.message);
   };
+
+
 
   /**
    * The purpose of this populate options for Next Term select element.
@@ -116,17 +118,19 @@
     google.script.run
       .withFailureHandler(onSelectTermNextFailure)
       .withSuccessHandler(setSelectTermNextOptions)
-      .getSelectTermOptionsFromSheet();
+      .getSelectTermOptionsFromSheet("nextTerm");
   };
 
-  window.setSelectTermNextOptions = function(argReturnedData) {
+  window.setSelectTermNextOptions = function(returnedOptionsArray) {
+    var returnedIndexValue = returnedOptionsArray[0];
     var selectTermElement = document.getElementById("selectTermNext");
     selectTermElement.options.length = 0;
-    for(var i = 0; i < argReturnedData.length; i++) {
+    for(var i = 1; i < returnedOptionsArray.length; i++) {
       var option = document.createElement("option");
-      option.text = argReturnedData[i];
+      option.text = returnedOptionsArray[i];
       selectTermElement.add(option);
     };
+    document.getElementById("selectTermNext").selectedIndex = returnedIndexValue;
   };
 
   window.onSelectTermNextFailure = function(err) {
@@ -159,28 +163,75 @@
   };
   
 
- /**
-   * The purpose of this populate options for index of currrent term.
-   *
-   */
-  function getIndexCurrentTerm() {
+function saveSelectedTerm(workingSelect) {
+    alert('Inside saved generic term in Sidebar01.html.');
+    var obj = document.getElementById("selectTermCurrent");
+    var selectedValue = obj.options[obj.selectedIndex].text;
+    var arrayToBePassed = [];
+    arrayToBePassed[0] = selectedValue;
+    arrayToBePassed[1] = workingSelect;
+    alert('Passing: ' + arrayToBePassed);
     google.script.run
-      .withFailureHandler(onIndexCurrentTermFailure)
-      .withSuccessHandler(setIndexCurrentTermOptions)
-      .getIndexCurrentTermOptionFromSheet();
+      .withFailureHandler(onSaveSelectedTermFailure)
+      .withSuccessHandler(onSaveSelectedTermSuccess)
+      .saveSelectedOptionToSheet(arrayToBePassed);
   };
 
-  window.setIndexCurrentTermOptions = function(argReturnedData) {
-    //window.alert('Current Term Index: '+ argReturnedData);
-    var selectPodElement = document.getElementById("selectCurrentTermIndex");
-    selectPodElement.options.length = 0;
-    var option = document.createElement("option");
-    option.text = argReturnedData;
-    selectPodElement.add(option);
+  window.onSaveSelectedTermSuccess = function(textValueCurrent) {
+    alert('Saved Current Term: ' + textValueCurrent);
   };
 
-  window.onIndexCurrentTermFailure = function(err) {
-    alert('There was an error getting pods for Next Pod! ' + err.message);
+  window.onSaveSelectedTermFailure = function(err) {
+    alert('There was an error saving Current Term! ' + err.message);
+  };
+
+
+
+function saveSelectedCurrentTerm() {
+    alert('Inside saved current term in Sidebar01.html.');
+    var obj = document.getElementById("selectTermCurrent");
+    var selectedValue = obj.options[obj.selectedIndex].text;
+    var workingSelect = "currentTerm";
+    var arrayToBePassed = [];
+    arrayToBePassed[0] = selectedValue;
+    arrayToBePassed[1] = workingSelect;
+    alert('Passing: ' + arrayToBePassed);
+    google.script.run
+      .withFailureHandler(onSaveSelectedCurrentTermFailure)
+      .withSuccessHandler(onSaveSelectedCurrentTermSuccess)
+      .saveSelectedOptionToSheet(arrayToBePassed);
+  };
+  
+  window.onSaveSelectedCurrentTermSuccess = function(textValueCurrent) {
+    alert('Saved Current Term: ' + textValueCurrent);
+  };
+
+  window.onSaveSelectedCurrentTermFailure = function(err) {
+    alert('There was an error saving Current Term! ' + err.message);
+  };
+
+
+function saveSelectedNextTerm() {
+    alert('Inside saved next term in Sidebar01.html.');
+    var obj = document.getElementById("selectTermNext");
+    var selectedValue = obj.options[obj.selectedIndex].text;
+    var workingSelect = "nextTerm";
+    var arrayToBePassed = [];
+    arrayToBePassed[0] = selectedValue;
+    arrayToBePassed[1] = workingSelect;
+    alert('Passing: ' + arrayToBePassed);
+    google.script.run
+      .withFailureHandler(onSetOptionFailure)
+      .withSuccessHandler(onSetOptionSuccess)
+      .saveSelectedOptionToSheet(arrayToBePassed);
+  };
+  
+  window.onSaveSelectedNextTermSuccess = function(textValueCurrent) {
+    alert('Saved Next Term: ' + textValueCurrent);
+  };
+
+  window.onSaveSelectedNextTermFailure = function(err) {
+    alert('There was an error saving Next Term! ' + err.message);
   };
 
 </script >
